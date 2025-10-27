@@ -1,5 +1,7 @@
 <?php
 
-$conn = mysqli_connect("localhost", "root", "", "sistem_perpustakaan_digital");
+$conn = mysqli_connect("localhost", "root", "", "perpustakaan_digital1");
+
+
 
 ?>
