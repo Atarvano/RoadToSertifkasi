@@ -8,9 +8,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $query = mysqli_query($conn, "SELECT * FROM user WHERE username = '$username'");
     $result = mysqli_fetch_assoc($query);
     if ($result && password_verify($password, $result['password'])) {
-        $_SESSION['username'] = $result['username'];
-        $_SESSION['role'] = $result['role'];
-        echo "Login successful";
+        if ($result['role'] === 'admin') {
+
+            $_SESSION['username'] = $result['username'];
+            $_SESSION['admin'] = $result['role'];
+            header("Location: ../admin/dashboard.php");
+        } else {
+            $_SESSION['id_user'] = $result['id'];
+            $_SESSION['username'] = $result['username'];
+            $_SESSION['user'] = $result['role'];
+            header("Location: ../anggota/dashboard.php");
+        }
     } else {
         echo "Invalid username or password";
     }
