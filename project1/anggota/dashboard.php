@@ -15,14 +15,39 @@ if (!isset($_SESSION['user'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buku</title>
+    <style>
+        @media print {
+            .title {
+                font-size: 24px;
+                display: none;
+            }
+
+            .tablee {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            .tablee th,
+            .tablee td {
+                border: 1px solid black;
+                padding: 8px;
+                text-align: left;
+            }
+
+            .tablee th {
+                background-color: #f2f2f2;
+
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Welcome to the Admin Dashboard</h1>
+    <h1 class="title">Welcome to the Admin Dashboard</h1>
 
 
 
-    <table>
+    <table class="title">
         <tr>
             <th>Book Title</th>
             <th>Tahun</th>
@@ -52,7 +77,7 @@ if (!isset($_SESSION['user'])) {
 
 
     <h1>Buku Yang dipinjam</h1>
-    <table>
+    <table class="tablee">
         <tr>
             <th>Judul Buku</th>
             <th>Tanggal Pinjam</th>
@@ -81,6 +106,7 @@ if (!isset($_SESSION['user'])) {
         }
         ?>
 
+        <button onclick="window.print()">Print</button>
 
 </body>
 
